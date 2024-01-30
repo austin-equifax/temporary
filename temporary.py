@@ -21,15 +21,15 @@ def populate_db():
     
         # Define two SQL queries to execute
         query_dict = {
-            transfer_license_source: ""
+            license_source: ""
             
-            transfer_sanctions_source: ""
-            transfer_sanctions_products: ""
-            transfer_sanctions_tags: ""
+            sanctions_source: ""
+            sanctions_products: ""
+            sanctions_tags: ""
         
-            transfer_healthstats_data: ""
-            transfer_healthstats_products: ""
-            transfer_healthstats_tags: ""
+            healthstats_data: ""
+            healthstats_products: ""
+            healthstats_tags: ""
         }
     
         for key, val in query_dict.items():
@@ -64,7 +64,7 @@ def transfer_files():
     username = ""
     password = ""
 
-    local_path = "./"
+    local_path = "./bi_transfers/"
     remote_path = "workforce/WSAISPROB005/incoming
 
     ssh_client = paramiko.SSHClient()
