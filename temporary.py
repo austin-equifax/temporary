@@ -5,6 +5,7 @@ import paramiko #2.7.2
 from ftplib import FTP 
 
 
+local_path = "./bi_transfers/"
 executed_query_list = []
 
 def populate_db():
@@ -42,7 +43,7 @@ def populate_db():
             query_name = key + date_string
         
             # Output results of the first query to a text file
-            with open('{query_name}.csv'.format(query_name=query_name),'w') as file:
+            with open(local_path + '{query_name}.csv'.format(query_name=query_name),'w') as file:
                 for row in results:
                     file.write(str(row) + '\n')
 
@@ -64,7 +65,6 @@ def transfer_files():
     username = ""
     password = ""
 
-    local_path = "./bi_transfers/"
     remote_path = "workforce/WSAISPROB005/incoming
 
     ssh_client = paramiko.SSHClient()
