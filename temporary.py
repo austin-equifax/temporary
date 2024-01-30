@@ -27,21 +27,21 @@ try:
         healthstats_tags: ""
     }
 
-for key, val in query_dict.items():
-    # Execute the first SQL query
-    cursor.execute(val)
-    results = cursor.fetchall()
-
-    date_object = datetime.now(tz=timezone.utc)
-    date_string = "_" + date_object.strftime('%Y%m%d_%H:%M:%S')
-    query_name = key + date_string
-
-    # Output results of the first query to a text file
-    with open('{query_name}.csv'.format(query_name=query_name),'w') as file:
-        for row in results:
-            file.write(str(row) + '\n')
-
-print("Queries executed and results saved to text files.")
+    for key, val in query_dict.items():
+        # Execute the first SQL query
+        cursor.execute(val)
+        results = cursor.fetchall()
+    
+        date_object = datetime.now(tz=timezone.utc)
+        date_string = "_" + date_object.strftime('%Y%m%d_%H:%M:%S')
+        query_name = key + date_string
+    
+        # Output results of the first query to a text file
+        with open('{query_name}.csv'.format(query_name=query_name),'w') as file:
+            for row in results:
+                file.write(str(row) + '\n')
+    
+    print("Queries executed and results saved to text files.")
 
 except MySQLdb.Error as e:
     print(f"Error: {e}")
